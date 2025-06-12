@@ -43,9 +43,33 @@ class Klant {
 
   getTotaalBedragOpenstaand() {
     // bereken het totaal van de facturen die nog niet betaald zijn.
+    const som = [];
+    for (let i = 0; i < this.facturen.length; i++) {
+      const som = 0;
+      if (this.facturen[i].betaald === false) {
+        som.push(this.facturen[i].bedrag);
+      }
+    }
+
+    console.log(som);
+  }
+  printFacturen(facturen) {
+    console.log("Facturen voor Jan Jansen:");
+    for (let i = 0; i < this.facturen.length; i++) {
+      if (this.facturen[i].betaald === false) {
+        this.facturen[i].betaald = "Openstaand";
+      }
+      if (this.facturen[i].betaald === true) {
+        this.facturen[i].betaald = "Betaald";
+      }
+      console.log(
+        `${this.facturen[i].factuurnummer}: €${this.facturen[i].bedrag}.00 - ${this.facturen[i].betaald} `
+      );
+    }
   }
 }
 
 module.exports = {
   Factuur,
+  Klant,
 };
